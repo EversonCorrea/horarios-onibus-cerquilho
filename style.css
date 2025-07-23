@@ -1,0 +1,153 @@
+body {
+    background-color: #f8f9fa; /* Um cinza bem claro para o fundo */
+    font-family: Arial, sans-serif;
+}
+
+/* Novo estilo para o cabeçalho principal */
+.main-header {
+    background: linear-gradient(to bottom, #003366, #004085); /* Gradiente de azul escuro para o azul base */
+    color: white; /* Cor do texto no cabeçalho */
+    padding: 1.5rem 0; /* Espaçamento interno superior/inferior (mantido para dar respiro) */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidade */
+}
+
+.main-header .container {
+    max-width: 900px; /* Garante que o conteúdo do cabeçalho siga a largura do container principal */
+}
+
+.header-brasao {
+    max-width: 80px; /* Tamanho da imagem do brasão no cabeçalho */
+    height: auto;
+}
+
+/* Ajuste do h1 dentro do header para garantir alinhamento e cor */
+.main-header h1 {
+    font-size: 2rem; /* Tamanho base do título para mobile */
+    margin-bottom: 0 !important; /* Remover margin-bottom padrão do h1 */
+    padding-top: 10px; /* Espaçamento entre o brasão e o texto */
+}
+
+.container {
+    max-width: 900px; /* Largura máxima para centralizar o conteúdo */
+}
+
+.card-header {
+    font-weight: bold;
+    background-color: #e9ecef; /* Cor de fundo para os cabeçalhos dos cards */
+    font-size: 1.1rem; /* Tamanho base da fonte para cabeçalhos de card */
+}
+
+.card-body {
+    padding: 1.25rem;
+}
+
+/* Estilo para o contorno verde no ponto pesquisado */
+.point-name-cell.highlight-border {
+    border: 2px solid #28a745 !important; /* Borda verde sólida */
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); /* Sombra suave para destacar ainda mais */
+    padding: 0.5rem; /* Ajuste para a borda não "comer" o texto */
+    display: inline-block; /* Garante que padding e border funcionem bem */
+    border-radius: 4px; /* Borda levemente arredondada */
+    background-color: transparent !important; /* Garante que não tenha cor de fundo */
+}
+
+/* Cores dos botões personalizados para as linhas */
+.btn-primary[data-line="azul"] {
+    background-color: #007bff; /* Cor azul */
+    border-color: #007bff;
+}
+.btn-danger[data-line="rosa"] {
+    background-color: #dc35b2; /* Cor rosa/vermelho */
+    border-color: #dc35b2;
+}
+.btn-success[data-line="translado"] {
+    background-color: #28a745; /* Cor verde */
+    border-color: #28a745;
+}
+
+/* Estilos da tabela */
+.table th, .table td {
+    vertical-align: middle;
+    padding: 0.75rem;
+    font-size: 0.85rem; /* Tamanho base da fonte para células da tabela */
+}
+
+.table thead th {
+    border-bottom: 2px solid #dee2e6;
+}
+
+/* INPUT de busca */
+#searchInput {
+    margin-bottom: 0.5rem;
+}
+
+/* --- Media Queries para Responsividade (Mobile-First) --- */
+
+/* Pequenos Tablets e Telefones em modo paisagem (landscape) */
+@media (min-width: 576px) {
+    .main-header h1 { /* Ajuste para o h1 dentro do header */
+        font-size: 2.2rem;
+    }
+    .d-md-flex {
+        gap: 0.75rem;
+    }
+    .table th, .table td {
+        font-size: 0.9rem;
+    }
+}
+
+/* Tablets e Telas Médias */
+@media (min-width: 768px) {
+    .main-header h1 { /* Ajuste para o h1 dentro do header */
+        font-size: 2.5rem;
+    }
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .card-header {
+        font-size: 1.2rem;
+    }
+    .table th, .table td {
+        font-size: 0.95rem;
+    }
+}
+
+/* Desktops e Telas Grandes */
+@media (min-width: 992px) {
+    .main-header h1 { /* Ajuste para o h1 dentro do header */
+        font-size: 3rem;
+    }
+    .main-header .container {
+        max-width: 1000px;
+    }
+    .container {
+        max-width: 1000px;
+    }
+    th, td {
+        font-size: 1rem;
+    }
+}
+
+/* Desktops muito Grandes */
+@media (min-width: 1200px) {
+    .main-header .container {
+        max-width: 1140px;
+    }
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/* --- ESTILO PARA O FOOTER --- */
+.footer {
+    background: linear-gradient(to top, #003366, #004085); /* Gradiente inverso ao do header */
+    color: white; /* Texto branco */
+    padding: 1rem 0; /* Espaçamento interno */
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para cima */
+    margin-top: 2rem; /* Espaçamento superior do footer */
+}
+
+.footer .container {
+    max-width: 900px; /* Alinhamento com o container principal */
+}

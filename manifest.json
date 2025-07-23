@@ -1,0 +1,21 @@
+{
+  "name": "Horários Tarifa Zero",
+  "short_name": "Ônibus Cerquilho",
+  "description": "Consulte os horários de ônibus Tarifa Zero em Cerquilho.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f8f9fa",
+  "theme_color": "#004085",
+  "icons": [
+    {
+      "src": "brasao-app-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "brasao-app-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
