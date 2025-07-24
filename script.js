@@ -1,4 +1,4 @@
-// 1. Dados dos horários (copiados das tabelas que geramos)
+// Dados dos horários (MANTENHA OS DADOS COMPLETOS E ORDENADOS AQUI)
 const schedules = {
     azul: [
         { ponto_onibus: 'Rodoviária', horarios_seg_sex: '5h00, 6h30, 8h00, 9h30, 11h00, 12h30, 14h00, 15h30, 17h00, 18h30, 20h00, 21h30', horarios_sabado: '9h00, 11h00, 15h30, 17h00, 18h30', horarios_domingo: '9h00, 11h00, 16h00, 18h30' },
@@ -91,18 +91,20 @@ const schedules = {
 
 const scheduleDisplay = document.getElementById('scheduleDisplay');
 const searchInput = document.getElementById('searchInput');
-let currentLineData = null; // Armazena os dados da linha atualmente selecionada
+let currentLineData = null;
 
 // Função para exibir a tabela de horários
 function displaySchedule(lineName) {
-    scheduleDisplay.innerHTML = ''; // Limpa o conteúdo anterior
+    scheduleDisplay.innerHTML = '';
     const lineData = schedules[lineName];
-    currentLineData = lineData; // Guarda os dados da linha selecionada
+    currentLineData = lineData;
 
     if (!lineData) {
         scheduleDisplay.innerHTML = `<p class="text-center text-danger">Linha '${lineName}' não encontrada.</p>`;
         return;
     }
+    
+    // NENHUMA ALTERAÇÃO NO CAMPO DE BUSCA AQUI - ELE CONTINUA ATIVO
 
     let tableHTML = `<h3 class="text-center text-capitalize mb-3">${lineName.replace('_', ' ')}</h3>`;
     tableHTML += `
@@ -125,7 +127,7 @@ function displaySchedule(lineName) {
         
         tableHTML += `
             <tr data-point-name="${ponto.ponto_onibus.toLowerCase()}">
-                <td>${ponto.ponto_onibus}${observacao}</td>
+                <td class="point-name-cell">${ponto.ponto_onibus}${observacao}</td>
                 <td>${ponto.horarios_seg_sex}</td>
                 <td>${ponto.horarios_sabado}</td>
                 <td>${domingo}</td>
@@ -139,28 +141,35 @@ function displaySchedule(lineName) {
         </div>
     `;
     scheduleDisplay.innerHTML = tableHTML;
-    highlightPoint(); // Destaca o ponto se houver algo na busca
+    // IMPORTANTE: Limpar o destaque e o campo de busca ao carregar nova linha
+    searchInput.value = '';
+    const previousHighlightedCells = scheduleDisplay.querySelectorAll('.highlight-border');
+    previousHighlightedCells.forEach(cell => cell.classList.remove('highlight-border'));
 }
 
 // Função para destacar o ponto de ônibus
 function highlightPoint() {
     const searchTerm = searchInput.value.toLowerCase().trim();
-    const rows = scheduleDisplay.querySelectorAll('tbody tr');
+    const pointNameCells = scheduleDisplay.querySelectorAll('td.point-name-cell');
 
-    // Remove qualquer destaque anterior
-    rows.forEach(row => {
-        row.classList.remove('highlight');
+    pointNameCells.forEach(cell => {
+        cell.classList.remove('highlight-border');
     });
 
     if (searchTerm === '') {
-        return; // Não faz nada se a busca estiver vazia
+        return;
     }
 
-    rows.forEach(row => {
-        const pointName = row.dataset.pointName;
-        if (pointName && pointName.includes(searchTerm)) {
-            row.classList.add('highlight');
-            row.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Rola até o ponto
+    let found = false;
+    pointNameCells.forEach(cell => {
+        const cellText = cell.textContent.toLowerCase(); 
+        
+        if (cellText.includes(searchTerm)) {
+            cell.classList.add('highlight-border');
+            if (!found) {
+                cell.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                found = true;
+            }
         }
     });
 }
@@ -175,15 +184,13 @@ document.querySelectorAll('.btn[data-line]').forEach(button => {
 
 // Adiciona event listener para o campo de busca (ao digitar)
 searchInput.addEventListener('input', highlightPoint);
-
-// Adiciona event listener para o campo de busca (ao pressionar Enter)
 searchInput.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
         highlightPoint();
     }
 });
 
-// Opcional: Exibir a linha azul por padrão ao carregar a página
+// Exibir a linha azul por padrão ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
     displaySchedule('azul');
 });
