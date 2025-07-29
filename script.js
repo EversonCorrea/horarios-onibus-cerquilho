@@ -1,4 +1,5 @@
 // 1. Dados dos horários (copiados das tabelas que geramos)
+// ESTA É A DEFINIÇÃO ORIGINAL E ÚNICA DOS DADOS.
 const schedules = {
     azul: [
         { ponto_onibus: 'Rodoviária', horarios_seg_sex: '5h00, 6h30, 8h00, 9h30, 11h00, 12h30, 14h00, 15h30, 17h00, 18h30, 20h00, 21h30', horarios_sabado: '9h00, 11h00, 15h30, 17h00, 18h30', horarios_domingo: '9h00, 11h00, 16h00, 18h30' },
@@ -51,38 +52,38 @@ const schedules = {
         { ponto_onibus: 'Distrito Industrial', horarios_seg_sex: '5h13, 6h43, 8h13, 9h43, 11h13, 12h43, 14h13, 15h43, 17h13, 18h43, 20h13, 21h43', horarios_sabado: '9h12, 11h12, 15h42, 17h12, 18h42', horarios_domingo: '9h12, 11h12, 16h12, 18h42' },
         { ponto_onibus: 'Previdência', horarios_seg_sex: '5h14, 6h44, 8h14, 9h44, 11h14, 12h44, 14h14, 15h44, 17h14, 18h44, 20h14, 21h44', horarios_sabado: '9h15, 11h15, 15h45, 17h15, 18h45', horarios_domingo: '9h15, 11h15, 16h15, 18h45' },
         { ponto_onibus: 'Adelaide Tozzi', horarios_seg_sex: '5h15, 6h45, 8h15, 9h45, 11h15, 12h45, 14h15, 15h45, 17h15, 18h45, 20h15, 21h45', horarios_sabado: '9h16, 11h16, 15h46, 17h16, 18h46', horarios_domingo: '9h16, 11h16, 16h16, 18h46' },
-        { ponto_onibus: 'Romano Sacon', horarios_seg_sex: '5h16, 6h46, 8h16, 9h46, 11h16, 12h46, 14h16, 15h46, 17h16, 18h46, 20h16, 21h46', horarios_sabado: '9h17, 11h17, 15h47, 17h17, 18h47', horarios_domingo: '9h17, 11h17, 16h17, 18h47' },
-        { ponto_onibus: 'Davina Moreira', horarios_seg_sex: '5h17, 6h47, 8h17, 9h47, 11h17, 12h47, 14h17, 15h47, 17h17, 18h47, 20h17, 21h47', horarios_sabado: '9h18, 11h18, 15h48, 17h18, 18h48', horarios_domingo: '9h18, 11h18, 16h18, 18h48' },
-        { ponto_onibus: 'Fundo Social', horarios_seg_sex: '5h18, 6h48, 8h18, 9h48, 11h18, 12h48, 14h18, 15h48, 17h18, 18h48, 20h18, 21h48', horarios_sabado: '9h19, 11h19, 15h49, 17h19, 18h49', horarios_domingo: '9h19, 11h19, 16h19, 18h49' },
-        { ponto_onibus: 'Ayrton Senna', horarios_seg_sex: '5h20, 6h50, 8h20, 9h50, 11h20, 12h50, 14h20, 15h50, 17h20, 18h50, 20h20, 21h50', horarios_sabado: '9h21, 11h21, 15h51, 17h21, 18h51', horarios_domingo: '9h21, 11h21, 16h21, 18h51' },
-        { ponto_onibus: 'Praça da Bíblia', horarios_seg_sex: '5h22, 6h52, 8h22, 9h52, 11h22, 12h52, 14h22, 15h22, 17h22, 18h52, 20h22, 21h52', horarios_sabado: '9h22, 11h22, 15h52, 17h22, 18h52', horarios_domingo: '9h22, 11h22, 16h22, 18h52' },
-        { ponto_onibus: 'Lázara Sabatini', horarios_seg_sex: '5h23, 6h53, 8h23, 9h53, 11h23, 12h53, 14h23, 15h53, 17h23, 18h53, 20h23, 21h53', horarios_sabado: '9h23, 11h23, 15h53, 17h23, 18h53', horarios_domingo: '9h23, 11h23, 16h23, 18h53' },
-        { ponto_onibus: 'UBSF Nova Cerquilho', horarios_seg_sex: '5h24, 6h54, 8h24, 9h54, 11h24, 12h54, 14h24, 15h54, 17h24, 18h54, 20h24, 21h54', horarios_sabado: '9h25, 11h25, 15h55, 17h25, 18h55', horarios_domingo: '9h25, 11h25, 16h25, 18h55' },
-        { ponto_onibus: 'Marina Bordenale', horarios_seg_sex: '5h25, 6h55, 8h25, 9h55, 11h25, 12h55, 14h25, 15h55, 17h25, 18h55, 20h25, 21h55', horarios_sabado: '9h26, 11h26, 15h56, 17h26, 18h56', horarios_domingo: '9h26, 11h26, 16h26, 18h56' },
-        { ponto_onibus: 'Campo União', horarios_seg_sex: '5h26, 6h56, 8h26, 9h56, 11h26, 12h56, 14h26, 15h56, 17h26, 18h56, 20h26, 21h56', horarios_sabado: '9h27, 11h27, 15h57, 17h27, 18h57', horarios_domingo: '9h27, 11h27, 16h27, 18h57' },
-        { ponto_onibus: 'Vitória Marcon', horarios_seg_sex: '5h28, 6h58, 8h28, 9h58, 11h28, 12h58, 14h28, 15h58, 17h28, 18h58, 20h28, 21h58', horarios_sabado: '9h29, 11h29, 15h59, 17h29, 18h59', horarios_domingo: '9h29, 11h29, 16h29, 18h59' },
-        { ponto_onibus: 'ETEC', horarios_seg_sex: '5h30, 7h00, 8h30, 10h00, 11h30, 13h00, 14h30, 16h00, 17h30, 19h00, 20h30, 22h00', horarios_sabado: '9h30, 11h30, 16h00, 17h30, 19h00', horarios_domingo: '9h30, 11h30, 16h30, 19h00' },
-        { ponto_onibus: 'SESI', horarios_seg_sex: '5h32, 7h02, 8h32, 10h02, 11h32, 13h02, 14h32, 16h02, 17h32, 19h02, 20h32, 22h02', horarios_sabado: '9h32, 11h32, 16h02, 17h32, 19h02', horarios_domingo: '9h32, 11h32, 16h32, 19h02' },
-        { ponto_onibus: 'João Pilon', horarios_seg_sex: '5h35, 7h05, 8h35, 10h05, 11h35, 13h05, 14h35, 16h05, 17h35, 19h05, 20h35, 22h05', horarios_sabado: '9h34, 11h34, 16h04, 17h34, 19h04', horarios_domingo: '9h34, 11h34, 16h34, 19h04' },
-        { ponto_onibus: 'Padre Júlio', horarios_seg_sex: '5h36, 7h06, 8h36, 10h06, 11h36, 13h06, 14h36, 16h06, 17h36, 19h06, 20h36, 22h06', horarios_sabado: '9h36, 11h36, 16h06, 17h36, 19h06', horarios_domingo: '9h36, 11h36, 16h36, 19h06' },
-        { ponto_onibus: 'UBSF Di Nápoli', horarios_seg_sex: '5h37, 7h07, 8h37, 10h07, 11h37, 13h07, 14h37, 16h07, 17h37, 19h07, 20h37, 22h07', horarios_sabado: '9h37, 11h37, 16h07, 17h37, 19h07', horarios_domingo: '9h37, 11h37, 16h37, 19h07' },
-        { ponto_onibus: 'Artur Gayotto', horarios_seg_sex: '5h38, 7h08, 8h38, 10h08, 11h38, 13h08, 14h38, 16h08, 17h38, 19h08, 20h38, 22h08', horarios_sabado: '9h39, 11h39, 16h09, 17h39, 19h09', horarios_domingo: '9h39, 11h39, 16h39, 19h09' },
-        { ponto_onibus: 'Praça Beatriz', horarios_seg_sex: '5h39, 7h09, 8h39, 10h09, 11h39, 13h09, 14h39, 16h09, 17h39, 19h09, 20h39, 22h09', horarios_sabado: '9h40, 11h40, 16h10, 17h40, 19h10', horarios_domingo: '9h40, 11h40, 16h40, 19h10' },
-        { ponto_onibus: 'Di Nápoli II', horarios_seg_sex: '5h40, 7h10, 8h40, 10h10, 11h40, 13h10, 14h40, 16h10, 17h40, 19h10, 20h40, 22h10', horarios_sabado: '9h41, 11h41, 16h11, 17h41, 19h11', horarios_domingo: '9h41, 11h41, 16h41, 19h11' },
-        { ponto_onibus: 'Domênico Modanese', horarios_seg_sex: '5h41, 7h11, 8h41, 10h11, 11h41, 13h11, 14h41, 16h11, 17h41, 19h11, 20h41, 22h11', horarios_sabado: '9h42, 11h42, 16h12, 17h42, 19h12', horarios_domingo: '9h42, 11h42, 16h42, 19h12' },
-        { ponto_onibus: 'Portal Di Napoli', horarios_seg_sex: '5h42, 7h12, 8h42, 10h12, 11h42, 13h12, 14h42, 16h12, 17h42, 19h12, 20h42, 22h12', horarios_sabado: '9h43, 11h43, 16h13, 17h43, 19h13', horarios_domingo: '9h43, 11h43, 16h43, 19h13' },
-        { ponto_onibus: 'Praça Edílio Grando', horarios_seg_sex: '5h43, 7h13, 8h43, 10h13, 11h43, 13h13, 14h43, 16h13, 17h43, 19h13, 20h43, 22h13', horarios_sabado: '9h44, 11h44, 16h14, 17h44, 19h14', horarios_domingo: '9h44, 11h44, 16h44, 19h14' },
-        { ponto_onibus: 'Leandro Nicolau', horarios_seg_sex: '5h44, 7h14, 8h44, 10h14, 11h44, 13h14, 14h44, 16h14, 17h44, 19h14, 20h44, 22h14', horarios_sabado: '9h45, 11h45, 16h15, 17h45, 19h15', horarios_domingo: '9h45, 11h45, 16h45, 19h15' },
-        { ponto_onibus: 'John Robert Orr', horarios_seg_sex: '5h46, 7h16, 8h46, 10h16, 11h46, 13h16, 14h46, 16h16, 17h46, 19h16, 20h46, 22h16', horarios_sabado: '9h46, 11h46, 16h16, 17h46, 19h16', horarios_domingo: '9h46, 11h46, 16h46, 19h16' },
-        { ponto_onibus: 'Albino Stefani', horarios_seg_sex: '5h47, 7h17, 8h47, 10h17, 11h47, 13h17, 14h47, 16h17, 17h47, 19h17, 20h47, 22h17', horarios_sabado: '9h47, 11h47, 16h17, 17h47, 19h17', horarios_domingo: '9h47, 11h47, 16h47, 19h17' },
-        { ponto_onibus: 'Angelo Módulo', horarios_seg_sex: '5h48, 7h18, 8h48, 10h18, 11h48, 13h18, 14h48, 16h18, 17h48, 19h18, 20h48, 22h18', horarios_sabado: '9h49, 11h49, 16h19, 17h49, 19h19', horarios_domingo: '9h49, 11h49, 16h49, 19h19' },
-        { ponto_onibus: 'João Paulo II', horarios_seg_sex: '5h50, 7h20, 8h50, 10h20, 11h50, 13h20, 14h50, 16h20, 17h50, 19h20, 20h50, 22h20', horarios_sabado: '9h51, 11h51, 16h21, 17h51, 19h21', horarios_domingo: '9h51, 11h51, 16h51, 19h21' },
-        { ponto_onibus: 'Praça das Mangueiras', horarios_seg_sex: '5h51, 7h21, 8h51, 10h21, 11h51, 13h21, 14h51, 16h21, 17h51, 19h21, 20h51, 22h21', horarios_sabado: '9h52, 11h52, 16h22, 17h52, 19h22', horarios_domingo: '9h52, 11h52, 16h52, 19h22' },
-        { ponto_onibus: 'Lar São José', horarios_seg_sex: '5h52, 7h22, 8h52, 10h22, 11h52, 13h22, 14h52, 16h22, 17h52, 19h22, 20h52, 22h22', horarios_sabado: '9h53, 11h53, 16h23, 17h53, 19h23', horarios_domingo: '9h53, 11h53, 16h53, 19h23' },
-        { ponto_onibus: 'Jardim Esplanada', horarios_seg_sex: '5h54, 7h24, 8h54, 10h24, 11h54, 13h24, 14h54, 16h24, 17h54, 19h24, 20h54, 22h24', horarios_sabado: '9h54, 11h54, 16h24, 17h54, 19h24', horarios_domingo: '9h54, 11h54, 16h54, 19h24' },
-        { ponto_onibus: 'Portal dos Pilares', horarios_seg_sex: '5h55, 7h25, 8h55, 10h25, 11h55, 13h25, 14h55, 16h25, 17h55, 19h25, 20h55, 22h25', horarios_sabado: '9h55, 11h55, 16h25, 17h55, 19h25', horarios_domingo: '9h55, 11h55, 16h55, 19h25' },
-        { ponto_onibus: 'Corradi II', horarios_seg_sex: '5h56, 7h26, 8h56, 10h26, 11h56, 13h26, 14h56, 16h26, 17h56, 19h26, 20h56, 22h26', horarios_sabado: '9h56, 11h56, 16h26, 17h56, 19h26', horarios_domingo: '9h56, 11h56, 16h56, 19h26' },
-        { ponto_onibus: 'Policlínica', horarios_seg_sex: '5h57, 7h27, 8h57, 10h27, 11h57, 13h27, 14h57, 16h27, 17h57, 19h27, 20h57, 22h27', horarios_sabado: '9h57, 11h57, 16h27, 17h57, 19h27', horarios_domingo: '9h57, 11h57, 16h57, 19h27' },
+        { ponto_onibus: 'Romano Sacon', horarios_seg_sex: '5h16, 6h46, 8h16, 9h46, 11h16, 12h46, 14h16, 15h46, 17h16, 18h46, 2016, 21h46', horarios_sabado: '9h17, 11h17, 15h47, 17h17, 18h47', horarios_domingo: '9h17, 11h17, 16h17, 18h47' },
+        { ponto_onibus: 'Davina Moreira', horarios_seg_sex: '5h17, 6h47, 8h17, 9h47, 11h17, 12h47, 14h17, 15h47, 17h17, 18h47, 2017, 21h47', horarios_sabado: '9h18, 11h18, 15h48, 17h18, 18h48', horarios_domingo: '9h18, 11h18, 16h18, 18h48' },
+        { ponto_onibus: 'Fundo Social', horarios_seg_sex: '5h18, 6h48, 8h18, 9h48, 11h18, 12h48, 14h18, 15h48, 17h18, 18h48, 2018, 21h48', horarios_sabado: '9h19, 11h19, 15h49, 17h19, 18h49', horarios_domingo: '9h19, 11h19, 16h19, 18h49' },
+        { ponto_onibus: 'Ayrton Senna', horarios_seg_sex: '5h20, 6h50, 8h20, 9h50, 11h20, 12h50, 14h20, 15h50, 17h20, 18h50, 2020, 21h50', horarios_sabado: '9h21, 11h21, 15h51, 17h21, 18h51', horarios_domingo: '9h21, 11h21, 16h21, 18h51' },
+        { ponto_onibus: 'Praça da Bíblia', horarios_seg_sex: '5h22, 6h52, 8h22, 9h52, 11h22, 12h52, 14h22, 15h22, 17h22, 18h52, 2022, 21h52', horarios_sabado: '9h22, 11h22, 15h52, 17h22, 18h52', horarios_domingo: '9h22, 11h22, 16h22, 18h52' },
+        { ponto_onibus: 'Lázara Sabatini', horarios_seg_sex: '5h23, 6h53, 8h23, 9h53, 11h23, 12h53, 14h23, 15h53, 17h23, 18h53, 2023, 21h53', horarios_sabado: '9h23, 11h23, 15h53, 17h23, 18h53', horarios_domingo: '9h23, 11h23, 16h23, 18h53' },
+        { ponto_onibus: 'UBSF Nova Cerquilho', horarios_seg_sex: '5h24, 6h54, 8h24, 9h54, 11h24, 12h54, 14h24, 15h54, 17h24, 18h54, 2024, 21h54', horarios_sabado: '9h25, 11h25, 15h55, 17h25, 18h55', horarios_domingo: '9h25, 11h25, 16h25, 18h55' },
+        { ponto_onibus: 'Marina Bordenale', horarios_seg_sex: '5h25, 6h55, 8h25, 9h55, 11h25, 12h55, 14h25, 15h55, 17h25, 18h55, 2025, 21h55', horarios_sabado: '9h26, 11h26, 15h56, 17h26, 18h56', horarios_domingo: '9h26, 11h26, 16h26, 18h56' },
+        { ponto_onibus: 'Campo União', horarios_seg_sex: '5h26, 6h56, 8h26, 9h56, 11h26, 12h56, 14h26, 15h56, 17h26, 18h56, 2026, 21h56', horarios_sabado: '9h27, 11h27, 15h57, 17h27, 18h57', horarios_domingo: '9h27, 11h27, 16h27, 18h57' },
+        { ponto_onibus: 'Vitória Marcon', horarios_seg_sex: '5h28, 6h58, 8h28, 9h58, 11h28, 12h58, 14h28, 15h58, 17h28, 18h58, 2028, 21h58', horarios_sabado: '9h29, 11h29, 15h59, 17h29, 18h59', horarios_domingo: '9h29, 11h29, 1629, 18h59' },
+        { ponto_onibus: 'ETEC', horarios_seg_sex: '5h30, 7h00, 8h30, 10h00, 11h30, 13h00, 14h30, 16h00, 17h30, 19h00, 2030, 22h00', horarios_sabado: '9h30, 11h30, 16h00, 17h30, 19h00', horarios_domingo: '9h30, 11h30, 1630, 19h00' },
+        { ponto_onibus: 'SESI', horarios_seg_sex: '5h32, 7h02, 8h32, 10h02, 11h32, 13h02, 14h32, 16h02, 17h32, 19h02, 2032, 22h02', horarios_sabado: '9h32, 11h32, 16h02, 17h32, 19h02', horarios_domingo: '9h32, 11h32, 1632, 19h02' },
+        { ponto_onibus: 'João Pilon', horarios_seg_sex: '5h35, 7h05, 8h35, 10h05, 11h35, 13h05, 14h35, 16h05, 17h35, 19h05, 2035, 22h05', horarios_sabado: '9h34, 11h34, 16h04, 17h34, 19h04', horarios_domingo: '9h34, 11h34, 1634, 19h04' },
+        { ponto_onibus: 'Padre Júlio', horarios_seg_sex: '5h36, 7h06, 8h36, 10h06, 11h36, 13h06, 14h36, 16h06, 17h36, 19h06, 2036, 22h06', horarios_sabado: '9h36, 11h36, 16h06, 17h36, 19h06', horarios_domingo: '9h36, 11h36, 1636, 19h06' },
+        { ponto_onibus: 'UBSF Di Nápoli', horarios_seg_sex: '5h37, 7h07, 8h37, 10h07, 11h37, 13h07, 14h37, 16h07, 17h37, 19h07, 2037, 22h07', horarios_sabado: '9h37, 11h37, 16h07, 17h37, 19h07', horarios_domingo: '9h37, 11h37, 1637, 19h07' },
+        { ponto_onibus: 'Artur Gayotto', horarios_seg_sex: '5h38, 7h08, 8h38, 10h08, 11h38, 13h08, 14h38, 16h08, 17h38, 19h08, 2038, 22h08', horarios_sabado: '9h39, 11h39, 16h09, 17h39, 19h09', horarios_domingo: '9h39, 11h39, 1639, 19h09' },
+        { ponto_onibus: 'Praça Beatriz', horarios_seg_sex: '5h39, 7h09, 8h39, 10h09, 11h39, 13h09, 14h39, 16h09, 17h39, 19h09, 2039, 22h09', horarios_sabado: '9h40, 11h40, 16h10, 17h40, 19h10', horarios_domingo: '9h40, 11h40, 1640, 19h10' },
+        { ponto_onibus: 'Di Nápoli II', horarios_seg_sex: '5h40, 7h10, 8h40, 10h10, 11h40, 13h10, 14h40, 16h10, 17h40, 19h10, 2040, 22h10', horarios_sabado: '9h41, 11h41, 16h11, 17h41, 19h11', horarios_domingo: '9h41, 11h41, 1641, 19h11' },
+        { ponto_onibus: 'Domênico Modanese', horarios_seg_sex: '5h41, 7h11, 8h41, 10h11, 11h41, 13h11, 14h41, 16h11, 17h41, 19h11, 2041, 22h11', horarios_sabado: '9h42, 11h42, 16h12, 17h42, 19h12', horarios_domingo: '9h42, 11h42, 1642, 19h12' },
+        { ponto_onibus: 'Portal Di Napoli', horarios_seg_sex: '5h42, 7h12, 8h42, 10h12, 11h42, 13h12, 14h42, 16h12, 17h42, 19h12, 2042, 22h12', horarios_sabado: '9h43, 11h43, 16h13, 17h43, 19h13', horarios_domingo: '9h43, 11h43, 1643, 19h13' },
+        { ponto_onibus: 'Praça Edílio Grando', horarios_seg_sex: '5h43, 7h13, 8h43, 10h13, 11h43, 13h13, 14h43, 16h13, 17h43, 19h13, 2043, 22h13', horarios_sabado: '9h44, 11h44, 16h14, 17h44, 19h14', horarios_domingo: '9h44, 11h44, 1644, 19h14' },
+        { ponto_onibus: 'Leandro Nicolau', horarios_seg_sex: '5h44, 7h14, 8h44, 10h14, 11h44, 13h14, 14h44, 16h14, 17h44, 19h14, 2044, 22h14', horarios_sabado: '9h45, 11h45, 16h15, 17h45, 19h15', horarios_domingo: '9h45, 11h45, 1645, 19h15' },
+        { ponto_onibus: 'John Robert Orr', horarios_seg_sex: '5h46, 7h16, 8h46, 10h16, 11h46, 13h16, 14h46, 16h16, 17h46, 19h16, 2046, 22h16', horarios_sabado: '9h46, 11h46, 16h16, 17h46, 19h16', horarios_domingo: '9h46, 11h46, 1646, 19h16' },
+        { ponto_onibus: 'Albino Stefani', horarios_seg_sex: '5h47, 7h17, 8h47, 10h17, 11h47, 13h17, 14h47, 16h17, 17h47, 19h17, 2047, 22h17', horarios_sabado: '9h47, 11h47, 16h17, 17h47, 19h17', horarios_domingo: '9h47, 11h47, 1647, 19h17' },
+        { ponto_onibus: 'Angelo Módulo', horarios_seg_sex: '5h48, 7h18, 8h48, 10h18, 11h48, 13h18, 14h48, 16h18, 17h48, 19h18, 2048, 22h18', horarios_sabado: '9h49, 11h49, 16h19, 17h49, 19h19', horarios_domingo: '9h49, 11h49, 1649, 19h19' },
+        { ponto_onibus: 'João Paulo II', horarios_seg_sex: '5h50, 7h20, 8h50, 10h20, 11h50, 13h20, 14h50, 16h20, 17h50, 19h20, 2050, 22h20', horarios_sabado: '9h51, 11h51, 16h21, 17h51, 19h21', horarios_domingo: '9h51, 11h51, 1651, 19h21' },
+        { ponto_onibus: 'Praça das Mangueiras', horarios_seg_sex: '5h51, 7h21, 8h51, 10h21, 11h51, 13h21, 14h51, 16h21, 17h51, 19h21, 2051, 22h21', horarios_sabado: '9h52, 11h52, 16h22, 17h52, 19h22', horarios_domingo: '9h52, 11h52, 1652, 19h22' },
+        { ponto_onibus: 'Lar São José', horarios_seg_sex: '5h52, 7h22, 8h52, 10h22, 11h52, 13h22, 14h52, 16h22, 17h52, 19h22, 2052, 22h22', horarios_sabado: '9h53, 11h53, 16h23, 17h53, 19h23', horarios_domingo: '9h53, 11h53, 1653, 19h23' },
+        { ponto_onibus: 'Jardim Esplanada', horarios_seg_sex: '5h54, 7h24, 8h54, 10h24, 11h54, 13h24, 14h54, 16h24, 17h54, 19h24, 2054, 22h24', horarios_sabado: '9h54, 11h54, 16h24, 17h54, 19h24', horarios_domingo: '9h54, 11h54, 1654, 19h24' },
+        { ponto_onibus: 'Portal dos Pilares', horarios_seg_sex: '5h55, 7h25, 8h55, 10h25, 11h55, 13h25, 14h55, 16h25, 17h55, 19h25, 2055, 22h25', horarios_sabado: '9h55, 11h55, 16h25, 17h55, 19h25', horarios_domingo: '9h55, 11h55, 1655, 19h25' },
+        { ponto_onibus: 'Corradi II', horarios_seg_sex: '5h56, 7h26, 8h56, 10h26, 11h56, 13h26, 14h56, 16h26, 17h56, 19h26, 2056, 22h26', horarios_sabado: '9h56, 11h56, 16h26, 17h56, 19h26', horarios_domingo: '9h56, 11h56, 1656, 19h26' },
+        { ponto_onibus: 'Policlínica', horarios_seg_sex: '5h57, 7h27, 8h57, 10h27, 11h57, 13h27, 14h57, 16h27, 17h57, 19h27, 2057, 22h27', horarios_sabado: '9h57, 11h57, 16h27, 17h57, 19h27', horarios_domingo: '9h57, 11h57, 1657, 19h27' },
     ],
     translado: [
         { ponto_onibus: 'TRANSLADO Loteamento Ribeiro', horarios_seg_sex: '6h30, 12h00, 17h00', horarios_sabado: '6h30, 12h00', observacao: 'Horário saindo da Rodoviária, indo ao Loteamento Ribeiro e retornando até a Rodoviária para utilização do Tarifa Zero.' },
@@ -166,8 +167,8 @@ function displaySchedule(lineName) {
         tableHTML += `
             <tr data-line-name="${lineName}" data-point-name="${ponto.ponto_onibus.toLowerCase()}" class="bus-stop-row">
                 <td>
+                    <i class="bi ${favoriteClass} favorite-icon me-2" data-line="${lineName}" data-point="${ponto.ponto_onibus}"></i>
                     ${ponto.ponto_onibus}${observacao}
-                    <i class="bi ${favoriteClass} favorite-icon" data-line="${lineName}" data-point="${ponto.ponto_onibus}"></i>
                 </td>
                 <td>${ponto.horarios_seg_sex}</td>
                 <td>${ponto.horarios_sabado}</td>
@@ -261,7 +262,8 @@ function displayFavoritePoints() {
                         <th>Segunda a Sexta</th>
                         <th>Sábado</th>
                         <th>Domingo</th>
-                        <th></th> </tr>
+                        <th></th>
+                    </tr>
                 </thead>
                 <tbody>
     `;
@@ -273,6 +275,7 @@ function displayFavoritePoints() {
         favoritesTableHTML += `
             <tr data-line-name="${fav.line}" data-point-name="${fav.ponto_onibus.toLowerCase()}" class="favorite-point-item bus-stop-row">
                 <td>
+                    <i class="bi bi-star-fill favorited favorite-icon me-2" data-line="${fav.line}" data-point="${fav.ponto_onibus}"></i>
                     <span class="point-name">${fav.ponto_onibus}</span>
                     <small class="text-muted text-capitalize">(${fav.line.replace('_', ' ')})</small>
                     ${observacao}
@@ -281,8 +284,7 @@ function displayFavoritePoints() {
                 <td>${fav.horarios_sabado}</td>
                 <td>${domingo}</td>
                 <td>
-                    <i class="bi bi-star-fill favorited favorite-icon" data-line="${fav.line}" data-point="${fav.ponto_onibus}"></i>
-                </td>
+                    </td>
             </tr>
         `;
     });
