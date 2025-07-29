@@ -8,18 +8,55 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS customizado para o carrossel multi-item (mantido para referência futura) */
+        .carousel-multi-item .carousel-item {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+            margin-right: 0;
+        }
+        .carousel-multi-item .carousel-item img {
+            width: 100%;
+            height: 60px;
+            object-fit: contain;
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .carousel-multi-item .carousel-control-prev,
+        .carousel-multi-item .carousel-control-next {
+            width: 5%;
+        }
+        .carousel-multi-item .carousel-control-prev-icon,
+        .carousel-multi-item .carousel-control-next-icon {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            padding: 8px;
+            font-size: 1rem;
+        }
+        .main-header .container {
+            position: relative;
+            overflow: hidden;
+        }
+        .carousel-multi-item {
+            padding-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <header class="main-header position-relative"> <div class="container d-flex flex-column align-items-center py-3">
+    <header class="main-header position-relative">
+        <div class="container d-flex flex-column align-items-center py-3">
             <img src="brasao3.png" alt="Brasão da Prefeitura" class="header-brasao mb-2"> 
-            
             <h1 class="text-center mb-0 text-white">Horários de Ônibus - Tarifa Zero Cerquilho</h1>
         </div>
         
         <a href="https://forms.gle/DyKQiJWp6g3qfkvMA" target="_blank" 
-           class="btn btn-primary btn-sm position-absolute top-0 end-0 m-2 z-3"> <i class="bi bi-star me-1"></i> Avalie
+           class="btn btn-primary btn-sm position-absolute top-0 end-0 m-2 z-3">
+            <i class="bi bi-star me-1"></i> Avalie
         </a>
-    </header>
+
+        
+</header>
 
     <div class="container my-4">
         <div class="card mb-4">
@@ -68,7 +105,11 @@
 
     <footer class="footer mt-auto py-3 bg-light">
         <div class="container text-center">
-            <span class="">Criado por: Everson Monteiro Corrêa</span>
+            <span class="">Criado por: 
+                <a href="https://www.linkedin.com/in/everson-correa/" target="_blank" class="text-decoration-none">
+                    Everson Corrêa <i class="bi bi-linkedin ms-1"></i>
+                </a>
+            </span>
         </div>
     </footer>
 
@@ -92,28 +133,22 @@
         const installAppButton = document.getElementById('installAppButton');
 
         window.addEventListener('beforeinstallprompt', (e) => {
-            // Previne que o mini-infobar apareça automaticamente
             e.preventDefault();
-            // Guarda o evento para disparar depois
             deferredPrompt = e;
-            // Mostra o botão de instalação personalizado
             installAppButton.classList.remove('d-none');
-            installAppButton.classList.add('d-block'); // Para garantir que ele apareça
+            installAppButton.classList.add('d-block');
 
             installAppButton.addEventListener('click', () => {
-                // Esconde o botão novamente
-                installAppButton.classList.remove('d-block'); // Remove 'd-block' também
-                installAppButton.classList.add('d-none'); // Esconde o botão
-                // Dispara o prompt nativo
+                installAppButton.classList.remove('d-block');
+                installAppButton.classList.add('d-none');
                 deferredPrompt.prompt();
-                // Espera pela escolha do usuário
                 deferredPrompt.userChoice.then((choiceResult) => {
                     if (choiceResult.outcome === 'accepted') {
                         console.log('Usuário aceitou instalar o PWA');
                     } else {
                         console.log('Usuário recusou instalar o PWA');
                     }
-                    deferredPrompt = null; // Limpa o evento
+                    deferredPrompt = null;
                 });
             });
         });
