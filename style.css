@@ -41,14 +41,11 @@ body {
     padding: 1.25rem;
 }
 
-/* Estilo para o contorno verde no ponto pesquisado */
-.point-name-cell.highlight-border {
+/* Estilo para o contorno verde na linha pesquisada (TUPLA INTEIRA) */
+.highlight {
     border: 2px solid #28a745 !important; /* Borda verde sólida */
-    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); /* Sombra suave para destacar ainda mais */
-    padding: 0.5rem; /* Ajuste para a borda não "comer" o texto */
-    display: inline-block; /* Garante que padding e border funcionem bem */
-    border-radius: 4px; /* Borda levemente arredondada */
-    background-color: transparent !important; /* Garante que não tenha cor de fundo */
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.5); /* Sombra suave para destacar ainda mais */
+    background-color: #e6ffe6 !important; /* Um verde bem clarinho para o fundo da linha destacada */
 }
 
 /* Cores dos botões personalizados para as linhas */
@@ -80,6 +77,28 @@ body {
 #searchInput {
     margin-bottom: 0.5rem;
 }
+
+/* Estilo para o ícone de estrela */
+.favorite-icon {
+    cursor: pointer;
+    margin-left: 8px;
+    color: #ccc; /* Estrela cinza (não favorito) */
+    transition: color 0.2s ease-in-out;
+}
+
+.favorite-icon.favorited {
+    color: #ffc107; /* Estrela amarela (favorito) */
+}
+
+/* REMOVIDO: Estilos antigos para .favorite-point-item que causavam desalinhamento em tabela */
+/* O Bootstrap .table-striped e .table-hover já cuidam do estilo das linhas */
+
+/* Adicionado: um espaçamento para o título da tabela de favoritos */
+#favoritePointsDisplay h4 {
+    margin-bottom: 1rem;
+    padding-left: 0.5rem; /* Um pequeno padding para não colar na borda do card */
+}
+
 
 /* --- Media Queries para Responsividade (Mobile-First) --- */
 

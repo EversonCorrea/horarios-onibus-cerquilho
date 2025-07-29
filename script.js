@@ -1,4 +1,4 @@
-// Dados dos horários (MANTENHA OS DADOS COMPLETOS E ORDENADOS AQUI)
+// 1. Dados dos horários (copiados das tabelas que geramos)
 const schedules = {
     azul: [
         { ponto_onibus: 'Rodoviária', horarios_seg_sex: '5h00, 6h30, 8h00, 9h30, 11h00, 12h30, 14h00, 15h30, 17h00, 18h30, 20h00, 21h30', horarios_sabado: '9h00, 11h00, 15h30, 17h00, 18h30', horarios_domingo: '9h00, 11h00, 16h00, 18h30' },
@@ -91,20 +91,54 @@ const schedules = {
 
 const scheduleDisplay = document.getElementById('scheduleDisplay');
 const searchInput = document.getElementById('searchInput');
-let currentLineData = null;
+const favoritePointsDisplay = document.getElementById('favoritePointsDisplay');
+const favoritesCard = document.getElementById('favoritesCard');
+
+let currentLineData = null; // Armazena os dados da linha atualmente selecionada
+
+// Função para carregar favoritos do localStorage
+function loadFavorites() {
+    const favorites = localStorage.getItem('favoriteBusStops');
+    return favorites ? JSON.parse(favorites) : [];
+}
+
+// Função para salvar favoritos no localStorage
+function saveFavorites(favorites) {
+    localStorage.setItem('favoriteBusStops', JSON.stringify(favorites));
+    displayFavoritePoints(); // Atualiza a exibição dos favoritos
+    updateFavoriteIcons(); // Garante que os ícones na tabela principal também se atualizem
+}
+
+// Função para adicionar/remover ponto dos favoritos
+function toggleFavorite(line, pointName) {
+    let favorites = loadFavorites();
+    const existingIndex = favorites.findIndex(fav => fav.line === line && fav.ponto_onibus === pointName);
+
+    if (existingIndex > -1) {
+        // Remover dos favoritos
+        favorites.splice(existingIndex, 1);
+    } else {
+        // Adicionar aos favoritos
+        // Encontrar os dados completos do ponto para salvar
+        const lineData = schedules[line];
+        const pointData = lineData ? lineData.find(p => p.ponto_onibus === pointName) : null;
+        if (pointData) {
+            favorites.push({ line, ...pointData });
+        }
+    }
+    saveFavorites(favorites);
+}
 
 // Função para exibir a tabela de horários
 function displaySchedule(lineName) {
-    scheduleDisplay.innerHTML = '';
+    scheduleDisplay.innerHTML = ''; // Limpa o conteúdo anterior
     const lineData = schedules[lineName];
-    currentLineData = lineData;
+    currentLineData = { name: lineName, data: lineData }; // Guarda os dados da linha selecionada
 
     if (!lineData) {
         scheduleDisplay.innerHTML = `<p class="text-center text-danger">Linha '${lineName}' não encontrada.</p>`;
         return;
     }
-    
-    // NENHUMA ALTERAÇÃO NO CAMPO DE BUSCA AQUI - ELE CONTINUA ATIVO
 
     let tableHTML = `<h3 class="text-center text-capitalize mb-3">${lineName.replace('_', ' ')}</h3>`;
     tableHTML += `
@@ -121,13 +155,20 @@ function displaySchedule(lineName) {
                 <tbody>
     `;
 
+    const favorites = loadFavorites();
+
     lineData.forEach(ponto => {
+        const isFavorited = favorites.some(fav => fav.line === lineName && fav.ponto_onibus === ponto.ponto_onibus);
+        const favoriteClass = isFavorited ? 'bi-star-fill favorited' : 'bi-star';
         const domingo = ponto.horarios_domingo || 'Não informado';
         const observacao = ponto.observacao ? ` <small class="text-muted">(${ponto.observacao})</small>` : '';
         
         tableHTML += `
-            <tr data-point-name="${ponto.ponto_onibus.toLowerCase()}">
-                <td class="point-name-cell">${ponto.ponto_onibus}${observacao}</td>
+            <tr data-line-name="${lineName}" data-point-name="${ponto.ponto_onibus.toLowerCase()}" class="bus-stop-row">
+                <td>
+                    ${ponto.ponto_onibus}${observacao}
+                    <i class="bi ${favoriteClass} favorite-icon" data-line="${lineName}" data-point="${ponto.ponto_onibus}"></i>
+                </td>
                 <td>${ponto.horarios_seg_sex}</td>
                 <td>${ponto.horarios_sabado}</td>
                 <td>${domingo}</td>
@@ -141,37 +182,155 @@ function displaySchedule(lineName) {
         </div>
     `;
     scheduleDisplay.innerHTML = tableHTML;
-    // IMPORTANTE: Limpar o destaque e o campo de busca ao carregar nova linha
-    searchInput.value = '';
-    const previousHighlightedCells = scheduleDisplay.querySelectorAll('.highlight-border');
-    previousHighlightedCells.forEach(cell => cell.classList.remove('highlight-border'));
+    highlightPoint(); // Destaca o ponto se houver algo na busca
+
+    // Adiciona event listener DELEGADO para os ícones de estrela
+    // Isso é mais eficiente, pois um único listener lida com todos os cliques nas estrelas
+    // mesmo as que são adicionadas dinamicamente.
+    scheduleDisplay.removeEventListener('click', handleStarClick); // Remove o antigo para evitar duplicação
+    scheduleDisplay.addEventListener('click', handleStarClick); // Adiciona o novo
 }
+
+// Handler para cliques nas estrelas
+function handleStarClick(event) {
+    if (event.target.classList.contains('favorite-icon')) {
+        const line = event.target.dataset.line;
+        const point = event.target.dataset.point;
+        toggleFavorite(line, point);
+    }
+}
+
+// Função para atualizar o estado dos ícones de estrela na tabela exibida
+function updateFavoriteIcons() {
+    // Itera sobre todos os ícones de estrela visíveis na tabela principal
+    document.querySelectorAll('#scheduleDisplay .favorite-icon').forEach(icon => {
+        const line = icon.dataset.line;
+        const pointName = icon.dataset.point;
+        const favorites = loadFavorites();
+        const isFavorited = favorites.some(fav => fav.line === line && fav.ponto_onibus === pointName);
+        
+        if (isFavorited) {
+            icon.classList.remove('bi-star');
+            icon.classList.add('bi-star-fill', 'favorited');
+        } else {
+            icon.classList.remove('bi-star-fill', 'favorited');
+            icon.classList.add('bi-star');
+        }
+    });
+
+    // Itera sobre todos os ícones de estrela visíveis na seção de favoritos
+    // (O event listener delegado já cuida da remoção do ícone quando desfavoritado dos favoritos)
+    document.querySelectorAll('#favoritePointsDisplay .favorite-icon').forEach(icon => {
+        const line = icon.dataset.line;
+        const pointName = icon.dataset.point;
+        const favorites = loadFavorites();
+        const isFavorited = favorites.some(fav => fav.line === line && fav.ponto_onibus === pointName);
+        
+        if (isFavorited) {
+            icon.classList.remove('bi-star');
+            icon.classList.add('bi-star-fill', 'favorited');
+        } else {
+            // Se um ícone de favorito não está mais na lista de favoritos, mas por algum motivo ainda está no DOM,
+            // garantimos que ele volte ao estado "não favoritado"
+            icon.classList.remove('bi-star-fill', 'favorited');
+            icon.classList.add('bi-star');
+        }
+    });
+}
+
+
+// Função para exibir os pontos favoritos
+function displayFavoritePoints() {
+    const favorites = loadFavorites();
+    favoritePointsDisplay.innerHTML = ''; // Limpa o conteúdo anterior
+
+    if (favorites.length === 0) {
+        favoritePointsDisplay.innerHTML = '<p class="text-center text-muted">Nenhum ponto favorito ainda. Clique na estrela para adicionar!</p>';
+        favoritesCard.style.display = 'none'; // Esconde o card se não houver favoritos
+        return;
+    }
+
+    favoritesCard.style.display = 'block'; // Mostra o card de favoritos
+
+    let favoritesTableHTML = `
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Ponto de Ônibus</th>
+                        <th>Segunda a Sexta</th>
+                        <th>Sábado</th>
+                        <th>Domingo</th>
+                        <th></th> </tr>
+                </thead>
+                <tbody>
+    `;
+
+    favorites.forEach(fav => {
+        const domingo = fav.horarios_domingo || 'Não informado';
+        const observacao = fav.observacao ? ` <small class="text-muted">(${fav.observacao})</small>` : '';
+        
+        favoritesTableHTML += `
+            <tr data-line-name="${fav.line}" data-point-name="${fav.ponto_onibus.toLowerCase()}" class="favorite-point-item bus-stop-row">
+                <td>
+                    <span class="point-name">${fav.ponto_onibus}</span>
+                    <small class="text-muted text-capitalize">(${fav.line.replace('_', ' ')})</small>
+                    ${observacao}
+                </td>
+                <td>${fav.horarios_seg_sex}</td>
+                <td>${fav.horarios_sabado}</td>
+                <td>${domingo}</td>
+                <td>
+                    <i class="bi bi-star-fill favorited favorite-icon" data-line="${fav.line}" data-point="${fav.ponto_onibus}"></i>
+                </td>
+            </tr>
+        `;
+    });
+
+    favoritesTableHTML += `
+                </tbody>
+            </table>
+        </div>
+    `;
+    favoritePointsDisplay.innerHTML = favoritesTableHTML;
+
+    // Adiciona event listener DELEGADO para os ícones de estrela na seção de favoritos
+    favoritePointsDisplay.removeEventListener('click', handleStarClick); // Remove o antigo para evitar duplicação
+    favoritePointsDisplay.addEventListener('click', handleStarClick); // Adiciona o novo
+}
+
 
 // Função para destacar o ponto de ônibus
 function highlightPoint() {
     const searchTerm = searchInput.value.toLowerCase().trim();
-    const pointNameCells = scheduleDisplay.querySelectorAll('td.point-name-cell');
+    // Seleciona todas as linhas da tabela que representam um ponto de ônibus
+    const rows = scheduleDisplay.querySelectorAll('tbody tr.bus-stop-row');
 
-    pointNameCells.forEach(cell => {
-        cell.classList.remove('highlight-border');
+    // Remove qualquer destaque anterior
+    rows.forEach(row => {
+        row.classList.remove('highlight');
     });
 
     if (searchTerm === '') {
-        return;
+        return; // Não faz nada se a busca estiver vazia
     }
 
-    let found = false;
-    pointNameCells.forEach(cell => {
-        const cellText = cell.textContent.toLowerCase(); 
-        
-        if (cellText.includes(searchTerm)) {
-            cell.classList.add('highlight-border');
-            if (!found) {
-                cell.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                found = true;
+    let firstHighlighted = null; // Para rolar até o primeiro destaque
+
+    rows.forEach(row => {
+        const pointName = row.dataset.pointName;
+        if (pointName && pointName.includes(searchTerm)) {
+            row.classList.add('highlight');
+            if (!firstHighlighted) {
+                firstHighlighted = row; // Salva a primeira linha destacada
             }
         }
     });
+
+    // Rola até o primeiro ponto destacado, se houver
+    if (firstHighlighted) {
+        firstHighlighted.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
 }
 
 // Adiciona event listeners para os botões de linha
@@ -184,13 +343,16 @@ document.querySelectorAll('.btn[data-line]').forEach(button => {
 
 // Adiciona event listener para o campo de busca (ao digitar)
 searchInput.addEventListener('input', highlightPoint);
+
+// Adiciona event listener para o campo de busca (ao pressionar Enter)
 searchInput.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
         highlightPoint();
     }
 });
 
-// Exibir a linha azul por padrão ao carregar a página
+// Exibir a linha azul por padrão ao carregar a página e carregar favoritos
 document.addEventListener('DOMContentLoaded', () => {
+    displayFavoritePoints(); // Carrega e exibe os favoritos ao carregar a página
     displaySchedule('azul');
 });

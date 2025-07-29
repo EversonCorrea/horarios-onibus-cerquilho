@@ -12,12 +12,39 @@
 <body>
     <header class="main-header">
         <div class="container d-flex flex-column align-items-center py-3">
-            <img src="brasao3.png" alt="Brasão da Prefeitura" class="header-brasao mb-3"> 
+            <img src="brasao3.png" alt="Brasão da Prefeitura" class="header-brasao mb-3">
             <h1 class="text-center mb-0 text-white">Horários de Ônibus - Tarifa Zero Cerquilho</h1>
         </div>
     </header>
 
     <div class="container my-4">
+        <div class="row mb-4">
+            <div class="col-md-9 mb-3 mb-md-0"> <div class="card h-100">
+                    <div class="card-header">
+                        Buscar Ponto de Ônibus
+                    </div>
+                    <div class="card-body">
+                        <input type="text" id="searchInput" class="form-control" placeholder="Digite o nome do ponto de ônibus...">
+                        <small class="form-text text-muted">A busca destacará o ponto na tabela.</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"> <div class="card h-100">
+                    <div class="card-header">
+                        Sua Opinião Importa!
+                    </div>
+                    <div class="card-body d-flex flex-column justify-content-center align-items-center py-2">
+                        <p class="text-center text-muted small mb-1">
+                            Avalie o app:
+                        </p>
+                        <a href="https://forms.gle/DyKQiJWp6g3qfkvMA" target="_blank" class="btn btn-primary btn-sm">
+                            Avaliar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="card mb-4">
             <div class="card-header">
                 Selecione a Linha
@@ -31,13 +58,12 @@
             </div>
         </div>
 
-        <div class="card mb-4">
+        <div class="card mb-4" id="favoritesCard" style="display: none;">
             <div class="card-header">
-                Buscar Ponto de Ônibus
+                Meus Pontos Favoritos
             </div>
-            <div class="card-body">
-                <input type="text" id="searchInput" class="form-control" placeholder="Selecione a linha e digite o ponto...">
-                <small class="form-text text-muted">Selecione uma linha acima, e depois digite o nome do ponto para destacá-lo.</small>
+            <div class="card-body" id="favoritePointsDisplay">
+                <p class="text-center text-muted">Nenhum ponto favorito ainda. Clique na estrela para adicionar!</p>
             </div>
         </div>
 
@@ -55,10 +81,7 @@
 
     <footer class="footer mt-auto py-3 bg-light">
         <div class="container text-center">
-            <span class="d-block mb-1">Criado por: Everson Monteiro Corrêa</span>
-            <a href="https://www.linkedin.com/in/everson-correa/" target="_blank" class="text-white text-decoration-none d-inline-block">
-                <i class="bi bi-linkedin" style="font-size: 1.5rem;"></i>
-            </a>
+            <span class="">Criado por: Everson Monteiro Corrêa</span>
         </div>
     </footer>
 
@@ -82,22 +105,28 @@
         const installAppButton = document.getElementById('installAppButton');
 
         window.addEventListener('beforeinstallprompt', (e) => {
+            // Previne que o mini-infobar apareça automaticamente
             e.preventDefault();
+            // Guarda o evento para disparar depois
             deferredPrompt = e;
+            // Mostra o botão de instalação personalizado
             installAppButton.classList.remove('d-none');
-            installAppButton.classList.add('d-block');
+            installAppButton.classList.add('d-block'); // Para garantir que ele apareça
 
             installAppButton.addEventListener('click', () => {
-                installAppButton.classList.remove('d-block');
-                installAppButton.classList.add('d-none');
+                // Esconde o botão novamente
+                installAppButton.classList.remove('d-block'); // Remove 'd-block' também
+                installAppButton.classList.add('d-none'); // Esconde o botão
+                // Dispara o prompt nativo
                 deferredPrompt.prompt();
+                // Espera pela escolha do usuário
                 deferredPrompt.userChoice.then((choiceResult) => {
                     if (choiceResult.outcome === 'accepted') {
                         console.log('Usuário aceitou instalar o PWA');
                     } else {
                         console.log('Usuário recusou instalar o PWA');
                     }
-                    deferredPrompt = null;
+                    deferredPrompt = null; // Limpa o evento
                 });
             });
         });
