@@ -29,7 +29,7 @@ const schedules = {
         { ponto_onibus: 'Praça dos Imigrantes', horarios_seg_sex: '5h50, 7h20, 8h50, 10h20, 11h50, 13h20, 14h50, 16h20, 17h50, 19h20, 20h50, 22h20', horarios_sabado: '9h49, 11h49, 16h19, 17h49, 19h19', horarios_domingo: '9h49, 11h49, 16h49, 19h19' },
         { ponto_onibus: 'Praça da Matriz', horarios_seg_sex: '5h51, 7h21, 8h51, 10h21, 11h51, 13h21, 14h51, 16h21, 17h51, 19h21, 20h51, 22h21', horarios_sabado: '9h51, 11h51, 16h21, 17h51, 19h21', horarios_domingo: '9h51, 11h51, 16h51, 19h21' },
         { ponto_onibus: 'Presidente Washington Luís', horarios_seg_sex: '5h53, 7h23, 8h53, 10h23, 11h53, 13h23, 14h53, 16h23, 17h53, 19h23, 20h53, 22h23', horarios_sabado: '9h54, 11h54, 16h24, 17h54, 19h24', horarios_domingo: '9h54, 11h54, 16h54, 19h24' },
-        { ponto_onibus: 'Recanto das Rosas', horarios_seg_sex: '5h59, 7h29, 8h59, 10h29, 11h59, 13h29, 14h59, 16h29, 17h59, 19h29, 20h59, 22h29', horarios_sabado: '9h56, 11h56, 16h26, 17h56, 19h26', horarios_domingo: '9h56, 11h56, 16h56, 19h26' },
+        { ponto_onibus: 'Recanto das Rosas', horarios_seg_sex: '5h59, 7h29, 8h59, 10h29, 11h59, 13h29, 14h59, 16h29, 17h59, 19h29, 20h59, 22h29', horarios_sabado: '9h56, 11h56, 1626, 17h56, 19h26', horarios_domingo: '9h56, 11h56, 1656, 19h26' },
         { ponto_onibus: 'Ondina Grando', horarios_seg_sex: '6h01, 7h31, 9h01, 10h31, 12h01, 13h31, 15h01, 16h31, 18h01, 19h31, 21h01, 22h31', horarios_sabado: '10h00, 12h00, 16h30, 18h00, 19h30', horarios_domingo: '10h00, 12h00, 17h00, 19h30' },
         { ponto_onibus: 'Flamboyant', horarios_seg_sex: '6h04, 7h34, 9h04, 10h34, 12h04, 13h34, 15h04, 16h34, 18h04, 19h34, 21h04, 22h34', horarios_sabado: '10h02, 12h02, 16h32, 18h02, 19h32', horarios_domingo: '10h02, 12h02, 17h02, 19h32' },
         { ponto_onibus: 'Fórum', horarios_seg_sex: '6h09, 7h39, 9h09, 10h39, 12h09, 13h39, 15h09, 16h39, 18h09, 19h39, 21h09, 22h39', horarios_sabado: '10h07, 12h07, 16h37, 18h07, 19h37', horarios_domingo: '10h07, 12h07, 17h07, 19h37' },
@@ -52,7 +52,7 @@ const schedules = {
         { ponto_onibus: 'Distrito Industrial', horarios_seg_sex: '5h13, 6h43, 8h13, 9h43, 11h13, 12h43, 14h13, 15h43, 17h13, 18h43, 20h13, 21h43', horarios_sabado: '9h12, 11h12, 15h42, 17h12, 18h42', horarios_domingo: '9h12, 11h12, 16h12, 18h42' },
         { ponto_onibus: 'Previdência', horarios_seg_sex: '5h14, 6h44, 8h14, 9h44, 11h14, 12h44, 14h14, 15h44, 17h14, 18h44, 20h14, 21h44', horarios_sabado: '9h15, 11h15, 15h45, 17h15, 18h45', horarios_domingo: '9h15, 11h15, 16h15, 18h45' },
         { ponto_onibus: 'Adelaide Tozzi', horarios_seg_sex: '5h15, 6h45, 8h15, 9h45, 11h15, 12h45, 14h15, 15h45, 17h15, 18h45, 20h15, 21h45', horarios_sabado: '9h16, 11h16, 15h46, 17h16, 18h46', horarios_domingo: '9h16, 11h16, 16h16, 18h46' },
-        { ponto_onibus: 'Romano Sacon', horarios_seg_sex: '5h16, 6h46, 8h16, 9h46, 11h16, 12h46, 14h16, 15h46, 17h16, 18h46, 2016, 21h46', horarios_sabado: '9h17, 11h17, 15h47, 17h17, 18h47', horarios_domingo: '9h17, 11h17, 16h17, 18h47' },
+        { ponto_onibus: 'Romano Sacon', horarios_seg_sex: '5h16, 6h46, 8h16, 9h46, 11h16, 12h46, 14h16, 15h46, 17h16, 18h46, 20h16, 21h46', horarios_sabado: '9h17, 11h17, 15h47, 17h17, 18h47', horarios_domingo: '9h17, 11h17, 16h17, 18h47' },
         { ponto_onibus: 'Davina Moreira', horarios_seg_sex: '5h17, 6h47, 8h17, 9h47, 11h17, 12h47, 14h17, 15h47, 17h17, 18h47, 2017, 21h47', horarios_sabado: '9h18, 11h18, 15h48, 17h18, 18h48', horarios_domingo: '9h18, 11h18, 16h18, 18h48' },
         { ponto_onibus: 'Fundo Social', horarios_seg_sex: '5h18, 6h48, 8h18, 9h48, 11h18, 12h48, 14h18, 15h48, 17h18, 18h48, 2018, 21h48', horarios_sabado: '9h19, 11h19, 15h49, 17h19, 18h49', horarios_domingo: '9h19, 11h19, 16h19, 18h49' },
         { ponto_onibus: 'Ayrton Senna', horarios_seg_sex: '5h20, 6h50, 8h20, 9h50, 11h20, 12h50, 14h20, 15h50, 17h20, 18h50, 2020, 21h50', horarios_sabado: '9h21, 11h21, 15h51, 17h21, 18h51', horarios_domingo: '9h21, 11h21, 16h21, 18h51' },
@@ -94,8 +94,10 @@ const scheduleDisplay = document.getElementById('scheduleDisplay');
 const searchInput = document.getElementById('searchInput');
 const favoritePointsDisplay = document.getElementById('favoritePointsDisplay');
 const favoritesCard = document.getElementById('favoritesCard');
+const searchCard = document.getElementById('searchCard');
+const notFoundMessageContainer = document.getElementById('notFoundMessage'); // Referência ao container da mensagem
 
-let currentLineData = null; // Armazena os dados da linha atualmente selecionada
+let currentLineData = null;
 
 // Função para carregar favoritos do localStorage
 function loadFavorites() {
@@ -106,8 +108,8 @@ function loadFavorites() {
 // Função para salvar favoritos no localStorage
 function saveFavorites(favorites) {
     localStorage.setItem('favoriteBusStops', JSON.stringify(favorites));
-    displayFavoritePoints(); // Atualiza a exibição dos favoritos
-    updateFavoriteIcons(); // Garante que os ícones na tabela principal também se atualizem
+    displayFavoritePoints();
+    updateFavoriteIcons();
 }
 
 // Função para adicionar/remover ponto dos favoritos
@@ -116,11 +118,8 @@ function toggleFavorite(line, pointName) {
     const existingIndex = favorites.findIndex(fav => fav.line === line && fav.ponto_onibus === pointName);
 
     if (existingIndex > -1) {
-        // Remover dos favoritos
         favorites.splice(existingIndex, 1);
     } else {
-        // Adicionar aos favoritos
-        // Encontrar os dados completos do ponto para salvar
         const lineData = schedules[line];
         const pointData = lineData ? lineData.find(p => p.ponto_onibus === pointName) : null;
         if (pointData) {
@@ -132,9 +131,15 @@ function toggleFavorite(line, pointName) {
 
 // Função para exibir a tabela de horários
 function displaySchedule(lineName) {
-    scheduleDisplay.innerHTML = ''; // Limpa o conteúdo anterior
+    // Torna visíveis os cards de pesquisa e de horários ao selecionar uma linha
+    searchCard.style.display = 'block';
+    scheduleDisplay.style.display = 'block';
+    
+    // Limpa o conteúdo anterior
+    scheduleDisplay.innerHTML = '';
+    
     const lineData = schedules[lineName];
-    currentLineData = { name: lineName, data: lineData }; // Guarda os dados da linha selecionada
+    currentLineData = { name: lineName, data: lineData };
 
     if (!lineData) {
         scheduleDisplay.innerHTML = `<p class="text-center text-danger">Linha '${lineName}' não encontrada.</p>`;
@@ -183,13 +188,10 @@ function displaySchedule(lineName) {
         </div>
     `;
     scheduleDisplay.innerHTML = tableHTML;
-    highlightPoint(); // Destaca o ponto se houver algo na busca
+    highlightPoint();
 
-    // Adiciona event listener DELEGADO para os ícones de estrela
-    // Isso é mais eficiente, pois um único listener lida com todos os cliques nas estrelas
-    // mesmo as que são adicionadas dinamicamente.
-    scheduleDisplay.removeEventListener('click', handleStarClick); // Remove o antigo para evitar duplicação
-    scheduleDisplay.addEventListener('click', handleStarClick); // Adiciona o novo
+    scheduleDisplay.removeEventListener('click', handleStarClick);
+    scheduleDisplay.addEventListener('click', handleStarClick);
 }
 
 // Handler para cliques nas estrelas
@@ -203,7 +205,6 @@ function handleStarClick(event) {
 
 // Função para atualizar o estado dos ícones de estrela na tabela exibida
 function updateFavoriteIcons() {
-    // Itera sobre todos os ícones de estrela visíveis na tabela principal
     document.querySelectorAll('#scheduleDisplay .favorite-icon').forEach(icon => {
         const line = icon.dataset.line;
         const pointName = icon.dataset.point;
@@ -219,8 +220,6 @@ function updateFavoriteIcons() {
         }
     });
 
-    // Itera sobre todos os ícones de estrela visíveis na seção de favoritos
-    // (O event listener delegado já cuida da remoção do ícone quando desfavoritado dos favoritos)
     document.querySelectorAll('#favoritePointsDisplay .favorite-icon').forEach(icon => {
         const line = icon.dataset.line;
         const pointName = icon.dataset.point;
@@ -231,8 +230,6 @@ function updateFavoriteIcons() {
             icon.classList.remove('bi-star');
             icon.classList.add('bi-star-fill', 'favorited');
         } else {
-            // Se um ícone de favorito não está mais na lista de favoritos, mas por algum motivo ainda está no DOM,
-            // garantimos que ele volte ao estado "não favoritado"
             icon.classList.remove('bi-star-fill', 'favorited');
             icon.classList.add('bi-star');
         }
@@ -243,15 +240,15 @@ function updateFavoriteIcons() {
 // Função para exibir os pontos favoritos
 function displayFavoritePoints() {
     const favorites = loadFavorites();
-    favoritePointsDisplay.innerHTML = ''; // Limpa o conteúdo anterior
-
+    favoritePointsDisplay.innerHTML = '';
+    
+    // Mostra o card de favoritos se houver favoritos, caso contrário, esconde
     if (favorites.length === 0) {
-        favoritePointsDisplay.innerHTML = '<p class="text-center text-muted">Nenhum ponto favorito ainda. Clique na estrela para adicionar!</p>';
-        favoritesCard.style.display = 'none'; // Esconde o card se não houver favoritos
+        favoritesCard.style.display = 'none';
         return;
     }
 
-    favoritesCard.style.display = 'block'; // Mostra o card de favoritos
+    favoritesCard.style.display = 'block';
 
     let favoritesTableHTML = `
         <div class="table-responsive">
@@ -262,7 +259,6 @@ function displayFavoritePoints() {
                         <th>Segunda a Sexta</th>
                         <th>Sábado</th>
                         <th>Domingo</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -283,8 +279,6 @@ function displayFavoritePoints() {
                 <td>${fav.horarios_seg_sex}</td>
                 <td>${fav.horarios_sabado}</td>
                 <td>${domingo}</td>
-                <td>
-                    </td>
             </tr>
         `;
     });
@@ -296,42 +290,67 @@ function displayFavoritePoints() {
     `;
     favoritePointsDisplay.innerHTML = favoritesTableHTML;
 
-    // Adiciona event listener DELEGADO para os ícones de estrela na seção de favoritos
-    favoritePointsDisplay.removeEventListener('click', handleStarClick); // Remove o antigo para evitar duplicação
-    favoritePointsDisplay.addEventListener('click', handleStarClick); // Adiciona o novo
+    favoritePointsDisplay.removeEventListener('click', handleStarClick);
+    favoritePointsDisplay.addEventListener('click', handleStarClick);
 }
 
 
 // Função para destacar o ponto de ônibus
 function highlightPoint() {
     const searchTerm = searchInput.value.toLowerCase().trim();
-    // Seleciona todas as linhas da tabela que representam um ponto de ônibus
     const rows = scheduleDisplay.querySelectorAll('tbody tr.bus-stop-row');
+    const tableBody = scheduleDisplay.querySelector('tbody');
+    let found = false;
 
-    // Remove qualquer destaque anterior
     rows.forEach(row => {
         row.classList.remove('highlight');
     });
 
     if (searchTerm === '') {
-        return; // Não faz nada se a busca estiver vazia
+        const notFoundMessage = document.getElementById('notFoundMessage');
+        if (notFoundMessage) {
+            notFoundMessage.remove();
+        }
+        return;
     }
 
-    let firstHighlighted = null; // Para rolar até o primeiro destaque
+    let firstHighlighted = null;
 
     rows.forEach(row => {
         const pointName = row.dataset.pointName;
         if (pointName && pointName.includes(searchTerm)) {
             row.classList.add('highlight');
+            found = true;
             if (!firstHighlighted) {
-                firstHighlighted = row; // Salva a primeira linha destacada
+                firstHighlighted = row;
             }
         }
     });
 
-    // Rola até o primeiro ponto destacado, se houver
-    if (firstHighlighted) {
-        firstHighlighted.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (!found) {
+        const oldMessage = document.getElementById('notFoundMessage');
+        if (oldMessage) {
+            oldMessage.remove();
+        }
+        
+        const notFoundMessage = document.createElement('p');
+        notFoundMessage.id = 'notFoundMessage';
+        notFoundMessage.className = 'text-center text-danger mt-3';
+        notFoundMessage.textContent = 'Não encontrado, tente outra linha ou ponto de ônibus.';
+        
+        if (tableBody) {
+             scheduleDisplay.appendChild(notFoundMessage);
+        } else {
+            scheduleDisplay.innerHTML += `<p id="notFoundMessage" class="text-center text-danger mt-3">Não encontrado, tente outra linha ou ponto de ônibus.</p>`;
+        }
+    } else {
+        const oldMessage = document.getElementById('notFoundMessage');
+        if (oldMessage) {
+            oldMessage.remove();
+        }
+        if (firstHighlighted) {
+            firstHighlighted.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
     }
 }
 
@@ -353,8 +372,12 @@ searchInput.addEventListener('keypress', (event) => {
     }
 });
 
-// Exibir a linha azul por padrão ao carregar a página e carregar favoritos
+// Ao carregar a página:
 document.addEventListener('DOMContentLoaded', () => {
-    displayFavoritePoints(); // Carrega e exibe os favoritos ao carregar a página
-    displaySchedule('azul');
+    // Esconder os cards de busca e de horários ao carregar a página
+    document.getElementById('searchCard').style.display = 'none';
+    scheduleDisplay.style.display = 'none';
+    
+    // Carrega e exibe os favoritos, se houver, no topo da página.
+    displayFavoritePoints(); 
 });
